@@ -1,24 +1,40 @@
 .form {
   background-color: #fff;
-  margin-bottom: 10px;
 }
+
 .form__header {
-  font-weight: bold;
   padding: 10px;
   border-bottom: 1px solid #ccc;
 }
+
+.form__inputElement {
+  display: flex;
+}
+
 .form__field {
   border: 1px solid #ccc;
   padding: 10px;
-  max-width: 400px;
-  width: 100%;
+  margin: 10px;
+  flex-grow: 1;
 }
 
 .form__newTaskButton {
   padding: 10px;
+  margin: 10px;
   border: none;
   background-color: teal;
   color: white;
+}
+
+@media (max-width: 767px) {
+  .form__inputElement {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .form__newTaskButton {
+    flex-basis: 100%;
+  }
 }
 
 .form__newTaskButton:hover {

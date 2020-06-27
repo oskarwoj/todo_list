@@ -33,11 +33,11 @@
       htmlString += `
       <li 
         ${task.done ? 'style="text-decoration: line-through"' : ""}
-        >
-        <button class="js-done">done</button>
-        ${task.content}
-        <button class="js-remove">delete</button>
-      </li>
+        ><div class="taskList__row">
+        <button class="taskList__button js-done">	&#x2713</button>
+        <span class="taskList__text">${task.content}</span>
+        <button class="taskList__button taskList__button--color js-remove">&#x1F5D1</button>
+      </li></div>
       `;
     }
 

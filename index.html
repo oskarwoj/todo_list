@@ -16,7 +16,6 @@
     />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/form.css" />
-    <link rel="stylesheet" href="css/container.css" />
     <link rel="stylesheet" href="css/taskList.css" />
     <script defer src="js/script.js"></script>
   </head>
@@ -26,8 +25,13 @@
       <h1>Lista zadań</h1>
       <form class="form js-form">
         <h2 class="form__header">Dodaj nowe zadanie</h2>
-        <input class="form__field js-newTask" />
-        <button class="form__newTaskButton">Dodaj zadanie</button>
+        <div class="form__inputElement">
+          <input
+            placeholder="Co jest do zrobienia?"
+            class="form__field js-newTask"
+          />
+          <button class="form__newTaskButton">Dodaj zadanie</button>
+        </div>
       </form>
       <div class="taskList">
         <h2 class="taskList__header">Lista zadań</h2>

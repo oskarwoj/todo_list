@@ -12,11 +12,12 @@ body {
   font-family: "Montserrat", sans-serif;
   min-height: 100vh;
   display: flex;
-  background-color: #eeedef;
+  background-color: #eee;
   justify-content: center;
   align-items: flex-start;
 }
 
-ul {
-  list-style: none;
+.container {
+  margin-top: 20px;
+  flex-basis: 80%;
 }

@@ -7,3 +7,30 @@
   padding: 10px;
   border-bottom: 1px solid #ccc;
 }
+
+.taskList__listElement {
+  justify-content: space-center;
+  list-style: none;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.taskList__button {
+  background-color: green;
+  text-decoration: none;
+  color: #fff;
+}
+.taskList__button--color {
+  background-color: red;
+}
+
+.taskList__row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+.taskList__text {
+  flex-grow: 1;
+  padding: 0 10px;
+}
