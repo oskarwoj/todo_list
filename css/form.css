@@ -1,0 +1,30 @@
+.form {
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+.form__header {
+  font-weight: bold;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.form__field {
+  border: 1px solid #ccc;
+  padding: 10px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.form__newTaskButton {
+  padding: 10px;
+  border: none;
+  background-color: teal;
+  color: white;
+}
+
+.form__newTaskButton:hover {
+  background-color: hsl(180, 100%, 30%);
+}
+
+.form__newTaskButton:active {
+  background-color: hsl(180, 100%, 35%);
+}

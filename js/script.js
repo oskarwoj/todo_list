@@ -4,10 +4,6 @@
       content: "Play Xbox",
       done: false,
     },
-    // {
-    //   content: "Eat breakfast",
-    //   done: true,
-    // },
   ];
 
   const addNewTask = (newTaskContent) => {

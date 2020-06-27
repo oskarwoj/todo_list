@@ -1,0 +1,9 @@
+.taskList {
+  background-color: #fff;
+}
+
+.taskList__header {
+  font-weight: bold;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}

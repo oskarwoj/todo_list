@@ -1,24 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ToDo List</title>
+    <title>Lista zadań</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
       integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU="
       crossorigin="anonymous"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/container.css" />
+    <link rel="stylesheet" href="css/taskList.css" />
     <script defer src="js/script.js"></script>
   </head>
+
   <body>
-    <form class="js-form">
-      <input class="js-newTask" />
-      <button>Add task</button>
-    </form>
-    <ul class="js-tasks"></ul>
+    <div class="container">
+      <h1>Lista zadań</h1>
+      <form class="form js-form">
+        <h2 class="form__header">Dodaj nowe zadanie</h2>
+        <input class="form__field js-newTask" />
+        <button class="form__newTaskButton">Dodaj zadanie</button>
+      </form>
+      <div class="taskList">
+        <h2 class="taskList__header">Lista zadań</h2>
+        <ul class="taskList__listElement js-tasks"></ul>
+      </div>
+    </div>
   </body>
 </html>

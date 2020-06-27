@@ -10,6 +10,11 @@ html {
 
 body {
   font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  background-color: #eeedef;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 ul {
