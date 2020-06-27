@@ -1,18 +1,10 @@
 {
-  const tasks = [
-    {
-      content: "Play Xbox",
-      done: false,
-    },
-  ];
+  const tasks = [];
 
   const addNewTask = (newTaskContent) => {
-    const clearNewTaskValue = document.querySelector(".js-newTask");
     tasks.push({
       content: newTaskContent,
     });
-    clearNewTaskValue.value = "";
-
     render();
   };
 
@@ -31,12 +23,12 @@
 
     for (const task of tasks) {
       htmlString += `
-      <li 
-        ${task.done ? 'style="text-decoration: line-through"' : ""}
-        ><div class="taskList__row">
-        <button class="taskList__button js-done">	&#x2713</button>
-        <span class="taskList__text">${task.content}</span>
-        <button class="taskList__button taskList__button--color js-remove">&#x1F5D1</button>
+      <li><div class="taskList__row">
+        <button class="taskList__button taskList__button--color js-done ">	&#x2713</button>
+        <span ${
+          task.done ? 'style="text-decoration: line-through"' : ""
+        } class="taskList__text">${task.content}</span>
+        <button class="taskList__button  js-remove">&#x1F5D1</button>
       </li></div>
       `;
     }
@@ -66,7 +58,10 @@
   const onFormSubmit = (event) => {
     event.preventDefault();
 
-    const newTaskContent = document.querySelector(".js-newTask").value.trim();
+    const newTask = document.querySelector(".js-newTask");
+    const newTaskContent = newTask.value.trim();
+    newTask.focus();
+    newTask.value = "";
 
     if (newTaskContent === "") {
       return;

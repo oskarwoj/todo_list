@@ -6,22 +6,27 @@
   font-weight: bold;
   padding: 10px;
   border-bottom: 1px solid #ccc;
+  margin-bottom: 0;
 }
 
 .taskList__listElement {
   justify-content: space-center;
   list-style: none;
   padding: 10px;
-  border-bottom: 1px solid #ccc;
 }
 
 .taskList__button {
-  background-color: green;
+  background-color: red;
   text-decoration: none;
-  color: #fff;
+  color: white;
 }
 .taskList__button--color {
-  background-color: red;
+  background-color: green;
+  color: green;
+}
+
+.js-colorWhite {
+  color: white;
 }
 
 .taskList__row {
