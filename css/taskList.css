@@ -4,7 +4,6 @@
 
 .taskList__header {
   font-size: 20px;
-  font-weight: bold;
   padding: 10px;
   border-bottom: 1px solid #ccc;
   margin-bottom: 0;
@@ -20,7 +19,6 @@
   background-color: red;
   color: white;
   border: none;
-  /* outline: none; */
 }
 .taskList__button--color {
   background-color: green;

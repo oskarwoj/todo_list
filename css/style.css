@@ -10,14 +10,11 @@ html {
 
 body {
   font-family: "Montserrat", sans-serif;
-  min-height: 100vh;
-  display: flex;
   background-color: #eee;
-  justify-content: center;
-  align-items: flex-start;
+  padding: 10px;
 }
 
-.container {
-  margin-top: 20px;
-  flex-basis: 80%;
+.main {
+  max-width: 1200px;
+  margin: 50px auto 0;
 }
