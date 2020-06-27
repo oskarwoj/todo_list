@@ -24,7 +24,9 @@
     for (const task of tasks) {
       htmlString += `
       <li><div class="taskList__row">
-        <button class="taskList__button taskList__button--color js-done ">	&#x2713</button>
+        <button ${
+          task.done ? 'style="color: white"' : ""
+        } class="taskList__button taskList__button--color js-done ">&#x2713</button>
         <span ${
           task.done ? 'style="text-decoration: line-through"' : ""
         } class="taskList__text">${task.content}</span>
