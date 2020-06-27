@@ -1,44 +1,69 @@
 {
   const tasks = [
     {
-      content: "Play Xbox ",
+      content: "Play Xbox",
       done: false,
     },
-    {
-      content: "Eat dinner",
-      done: true,
-    },
+    // {
+    //   content: "Eat breakfast",
+    //   done: true,
+    // },
   ];
 
   const addNewTask = (newTaskContent) => {
+    const clearNewTaskValue = document.querySelector(".js-newTask");
     tasks.push({
       content: newTaskContent,
     });
+    clearNewTaskValue.value = "";
+
     render();
   };
 
-  const removeTask = (index) => {
-    tasks.splice(index, 1);
+  const removeTask = (taskIndex) => {
+    tasks.splice(taskIndex, 1);
+    render();
+  };
+
+  const toogleTaskDone = (taskIndex) => {
+    tasks[taskIndex].done = !tasks[taskIndex].done;
     render();
   };
 
   const render = () => {
     let htmlString = "";
+
     for (const task of tasks) {
-      htmlString += ` 
-        <li 
-            ${task.done ? 'style="text-decoration: line-through"' : ""}
-        > <button class="js-remove">delete</button>
-            ${task.content}
-        </li>
+      htmlString += `
+      <li 
+        ${task.done ? 'style="text-decoration: line-through"' : ""}
+        >
+        <button class="js-done">done</button>
+        ${task.content}
+        <button class="js-remove">delete</button>
+      </li>
       `;
     }
-    document.querySelector(".js-tasks").innerHTML = htmlString;
 
+    document.querySelector(".js-tasks").innerHTML = htmlString;
+    bindEvent();
+  };
+
+  const bindEvent = () => {
     const removeButtons = document.querySelectorAll(".js-remove");
 
     removeButtons.forEach((removeButton, index) => {
-      removeButton.addEventListener("click", removeTask);
+      removeButton.addEventListener("click", () => {
+        removeTask(index);
+      });
+    });
+
+    const toogleDoneButtons = document.querySelectorAll(".js-done");
+
+    toogleDoneButtons.forEach((toogleDoneButton, index) => {
+      toogleDoneButton.addEventListener("click", () => {
+        toogleTaskDone(index);
+      });
     });
   };
 
@@ -50,7 +75,6 @@
     if (newTaskContent === "") {
       return;
     }
-
     addNewTask(newTaskContent);
   };
 
