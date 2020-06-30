@@ -8,7 +8,7 @@
   border-bottom: 1px solid #ccc;
 }
 
-.form__inputElement {
+.form__input {
   display: flex;
 }
 
@@ -21,15 +21,14 @@
 
 .form__newTaskButton {
   padding: 10px;
-  margin: 10px;
+  margin: 10px 10px 10px 0;
   border: none;
   background-color: teal;
   color: white;
 }
 
 @media (max-width: 767px) {
-  .form__inputElement {
-    display: flex;
+  .form__input {
     flex-wrap: wrap;
   }
 

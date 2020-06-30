@@ -23,23 +23,22 @@
 
     for (const task of tasks) {
       htmlString += `
-      <li><div class="taskList__row">
-        <button ${
-          task.done ? 'style="color: white"' : ""
-        } class="taskList__button taskList__button--color js-done ">&#x2713</button>
-        <span ${
-          task.done ? 'style="text-decoration: line-through"' : ""
-        } class="taskList__text">${task.content}</span>
+      <li class="taskList__row">
+        <button  class="taskList__button taskList__button--color 
+        ${task.done ? "taskList__button--done" : ""} js-done ">&#x2713</button>
+        <span class="taskList__text 
+        ${task.done ? "taskList__listElement--done" : ""}">
+        ${task.content}</span>
         <button class="taskList__button  js-remove">&#x1F5D1</button>
-      </li></div>
+      </li>
       `;
     }
 
     document.querySelector(".js-tasks").innerHTML = htmlString;
-    bindEvent();
+    bindEvents();
   };
 
-  const bindEvent = () => {
+  const bindEvents = () => {
     const removeButtons = document.querySelectorAll(".js-remove");
 
     removeButtons.forEach((removeButton, index) => {
@@ -63,11 +62,12 @@
     const newTask = document.querySelector(".js-newTask");
     const newTaskContent = newTask.value.trim();
     newTask.focus();
-    newTask.value = "";
 
     if (newTaskContent === "") {
       return;
     }
+
+    newTask.value = "";
     addNewTask(newTaskContent);
   };
 

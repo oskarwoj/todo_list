@@ -10,9 +10,12 @@
 }
 
 .taskList__listElement {
-  justify-content: space-center;
   list-style: none;
   padding: 10px;
+}
+
+.taskList__listElement--done {
+  text-decoration: line-through;
 }
 
 .taskList__button {
@@ -25,9 +28,11 @@
   color: green;
 }
 
-.js-colorWhite {
+.taskList__button--done {
   color: white;
 }
+
+
 
 .taskList__row {
   display: flex;
