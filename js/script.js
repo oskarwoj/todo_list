@@ -23,13 +23,14 @@
 
     for (const task of tasks) {
       htmlString += `
-      <li class="taskList__row">
-        <button  class="taskList__button taskList__button--color 
-        ${task.done ? "taskList__button--done" : ""} js-done ">&#x2713</button>
-        <span class="taskList__text 
-        ${task.done ? "taskList__listElement--done" : ""}">
-        ${task.content}</span>
-        <button class="taskList__button  js-remove">&#x1F5D1</button>
+      <li class="tasks__item js-task">
+
+        <button  class="tasks__button tasks__button--toogleDone js-toogleDone">
+        ${task.done ? "✔" : ""}</button>
+        <span class="tasks__content 
+        ${task.done ? "tasks__content--done" : ""}">${task.content}</span>
+
+        <button class="tasks__button tasks__button--remove js-remove">🗑</button>
       </li>
       `;
     }
@@ -47,7 +48,7 @@
       });
     });
 
-    const toogleDoneButtons = document.querySelectorAll(".js-done");
+    const toogleDoneButtons = document.querySelectorAll(".js-toogleDone");
 
     toogleDoneButtons.forEach((toogleDoneButton, index) => {
       toogleDoneButton.addEventListener("click", () => {
