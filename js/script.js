@@ -1,13 +1,6 @@
 {
   const tasks = [];
 
-  const addNewTask = (newTaskContent) => {
-    tasks.push({
-      content: newTaskContent,
-    });
-    render();
-  };
-
   const removeTask = (taskIndex) => {
     tasks.splice(taskIndex, 1);
     render();
@@ -18,28 +11,12 @@
     render();
   };
 
-  const render = () => {
-    let htmlString = "";
-
-    for (const task of tasks) {
-      htmlString += `
-      <li class="tasks__item js-task">
-
-        <button  class="tasks__button tasks__button--toogleDone js-toogleDone">
-        ${task.done ? "✔" : ""}</button>
-        <span class="tasks__content 
-        ${task.done ? "tasks__content--done" : ""}">${task.content}</span>
-
-        <button class="tasks__button tasks__button--remove js-remove">🗑</button>
-      </li>
-      `;
-    }
-
-    document.querySelector(".js-tasks").innerHTML = htmlString;
-    bindEvents();
+  const addNewTask = (newTaskContent) => {
+    tasks.push({ content: newTaskContent });
+    render();
   };
 
-  const bindEvents = () => {
+  const bindRemoveEvents = () => {
     const removeButtons = document.querySelectorAll(".js-remove");
 
     removeButtons.forEach((removeButton, index) => {
@@ -47,7 +24,9 @@
         removeTask(index);
       });
     });
+  };
 
+  const bindToogleDoneEvents = () => {
     const toogleDoneButtons = document.querySelectorAll(".js-toogleDone");
 
     toogleDoneButtons.forEach((toogleDoneButton, index) => {
@@ -57,19 +36,39 @@
     });
   };
 
+  const render = () => {
+    let tasksListHTMLContent = "";
+
+    for (const task of tasks) {
+      tasksListHTMLContent += `
+      <li class="tasks__item js-task">
+
+        <button  class="tasks__button tasks__button--toogleDone js-toogleDone">
+        ${task.done ? "✔" : ""}</button>
+        <span class="tasks__content 
+        ${task.done ? "tasks__content--done" : ""}">${task.content}</span>
+        <button class="tasks__button tasks__button--remove js-remove">🗑</button>
+      </li>
+      `;
+    }
+
+    document.querySelector(".js-tasks").innerHTML = tasksListHTMLContent;
+    bindRemoveEvents();
+    bindToogleDoneEvents();
+  };
+
   const onFormSubmit = (event) => {
     event.preventDefault();
 
-    const newTask = document.querySelector(".js-newTask");
-    const newTaskContent = newTask.value.trim();
-    newTask.focus();
+    const newTaskElement = document.querySelector(".js-newTask");
+    const newTaskContent = newTaskElement.value.trim();
 
-    if (newTaskContent === "") {
-      return;
+    if (newTaskContent !== "") {
+      addNewTask(newTaskContent);
+      newTaskElement.value = "";
     }
 
-    newTask.value = "";
-    addNewTask(newTaskContent);
+    newTaskElement.focus();
   };
 
   const init = () => {
