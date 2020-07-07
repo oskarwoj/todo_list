@@ -10,7 +10,16 @@
     });
   };
 
-  // const bindAllDone = () => {}
+  const bindAllDoneButton = () => {
+    const allDoneButton = document.querySelector(".js-setDoneAll");
+    allDoneButton.addEventListener("click", () => {
+      tasks.forEach((task, index) => {
+        if (!task.done) {
+          toogleTaskDone(index);
+        }
+      });
+    });
+  };
 
   const removeTask = (taskIndex) => {
     tasks = [...tasks.slice(0, taskIndex), ...tasks.splice(taskIndex + 1)];
@@ -87,7 +96,9 @@
       <button class="section__button js-hideDoneButton">
        ${hideDoneTasks ? "Pokaż ukończone" : "Ukryj ukończone"} 
       </button>
-      <button class="section__button js-setDoneAll">
+      <button class="section__button js-setDoneAll"  ${
+        tasks.every(({ done }) => done) ? "disabled" : ""
+      }>
         Ukończ wszystkie
       </button>`;
 
@@ -95,6 +106,7 @@
       insertHTML.innerHTML = buttonsHTMLContent;
 
       bindHideButton();
+      bindAllDoneButton();
     }
   };
 

@@ -43,3 +43,7 @@
 .section__body {
   padding: 20px;
 }
+
+.section__button:disabled {
+  color: #ddd;
+}
