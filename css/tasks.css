@@ -23,6 +23,7 @@
   width: 30px;
   height: 30px;
   padding: 0;
+  transition: background 1s, transform 1s;
 }
 
 .tasks__button--toogleDone {
@@ -30,7 +31,7 @@
 }
 
 .tasks__button--toogleDone:hover {
-  background-color: hsl(120, 61%, 39%);
+  background-color: hsl(120, 61%, 70%);
 }
 
 .tasks__button--toogleDone:active {
@@ -42,7 +43,7 @@
 }
 
 .tasks__button--remove:hover {
-  background-color: hsl(348, 83%, 52%);
+  background-color: hsl(348, 83%, 70%);
 }
 
 .tasks__button--remove:active {

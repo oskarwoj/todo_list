@@ -1,18 +1,28 @@
 {
-  const tasks = [];
+  let tasks = [];
 
   const removeTask = (taskIndex) => {
-    tasks.splice(taskIndex, 1);
+    tasks = [...tasks.slice(0, taskIndex), ...tasks.splice(taskIndex + 1)];
     render();
   };
 
   const toogleTaskDone = (taskIndex) => {
-    tasks[taskIndex].done = !tasks[taskIndex].done;
+    tasks = [
+      ...tasks.slice(0, taskIndex),
+      { ...tasks[taskIndex], done: !tasks[taskIndex].done },
+      ...tasks.slice(taskIndex + 1),
+    ];
     render();
   };
 
-  const addNewTask = (newTaskContent) => {
-    tasks.push({ content: newTaskContent });
+  const addNewTask = (content) => {
+    tasks = [
+      ...tasks,
+      {
+        content,
+        done: false,
+      },
+    ];
     render();
   };
 
@@ -42,12 +52,15 @@
     for (const task of tasks) {
       tasksListHTMLContent += `
       <li class="tasks__item js-task">
-
         <button  class="tasks__button tasks__button--toogleDone js-toogleDone">
-        ${task.done ? "✔" : ""}</button>
+        ${task.done ? "✔" : ""}
+        </button>
         <span class="tasks__content 
-        ${task.done ? "tasks__content--done" : ""}">${task.content}</span>
-        <button class="tasks__button tasks__button--remove js-remove">🗑</button>
+        ${task.done ? "tasks__content--done" : ""}">${task.content}
+        </span>
+        <button class="tasks__button tasks__button--remove js-remove">
+        🗑
+        </button>
       </li>
       `;
     }
