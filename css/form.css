@@ -20,7 +20,7 @@
   background-color: hsl(180, 100%, 25%);
   color: white;
   border: none;
-  transition: transform 1s;
+  transition: background 0.5s, transform 0.5s;
 }
 
 .form__button:hover {

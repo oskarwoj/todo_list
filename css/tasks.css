@@ -21,15 +21,13 @@
   text-decoration: line-through;
 }
 
-
-
 .tasks__button {
   border: none;
   color: white;
   width: 30px;
   height: 30px;
   padding: 0;
-  transition: background 1s, transform 1s;
+  transition: background 1s;
 }
 
 .tasks__button--toogleDone {

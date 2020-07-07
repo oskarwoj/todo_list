@@ -37,7 +37,7 @@
 .section__button {
   background-color: white;
   color: teal;
-  border-style: none;
+  border: none;
 }
 
 .section__body {

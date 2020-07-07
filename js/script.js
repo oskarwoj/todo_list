@@ -22,7 +22,7 @@
   };
 
   const removeTask = (taskIndex) => {
-    tasks = [...tasks.slice(0, taskIndex), ...tasks.splice(taskIndex + 1)];
+    tasks = [...tasks.slice(0, taskIndex), ...tasks.slice(taskIndex + 1)];
     render();
   };
 
@@ -74,10 +74,10 @@
         task.done && hideDoneTasks ? "task__item--hide" : ""
       }">
         <button  class="tasks__button tasks__button--toogleDone js-toogleDone">
-        ${task.done ? "✔" : ""}
+          ${task.done ? "✔" : ""}
         </button>
         <span class="tasks__content 
-        ${task.done ? "tasks__content--done" : ""}">${task.content}
+          ${task.done ? "tasks__content--done" : ""}">${task.content}
         </span>
         <button class="tasks__button tasks__button--remove js-remove">
         🗑
@@ -110,15 +110,12 @@
     }
   };
 
-  const bindButtonsEvents = () => {};
-
   const render = () => {
     renderTasks();
     renderButtons();
 
     bindRemoveEvents();
     bindToogleDoneEvents();
-    bindButtonsEvents();
   };
 
   const onFormSubmit = (event) => {
