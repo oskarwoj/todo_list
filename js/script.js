@@ -88,6 +88,7 @@
     document.querySelector(".js-tasks").innerHTML = tasksListHTMLContent;
   };
   const renderButtons = () => {
+    const insertHTML = document.querySelector(".js-buttonsContainer");
     let buttonsHTMLContent = "";
 
     if (tasks.length) {
@@ -101,7 +102,6 @@
         Ukończ wszystkie
       </button>`;
 
-      const insertHTML = document.querySelector(".js-buttonsContainer");
       insertHTML.innerHTML = buttonsHTMLContent;
 
       bindHideButton();
