@@ -2,23 +2,25 @@
   let tasks = [];
   let hideDoneTasks = false;
 
-  const bindHideButton = () => {
-    const hideButton = document.querySelector(".js-hideDoneButton");
-    hideButton.addEventListener("click", () => {
-      hideDoneTasks = !hideDoneTasks;
-      render();
+  const reverseTaskDone = () => {
+    hideDoneTasks = !hideDoneTasks;
+    render();
+  };
+
+  const setItemDone = () => {
+    tasks.forEach((task, index) => {
+      if (!task.done) {
+        toogleTaskDone(index);
+      }
     });
   };
 
-  const bindAllDoneButton = () => {
+  const bindButtons = () => {
+    const hideButton = document.querySelector(".js-hideDoneButton");
+    hideButton.addEventListener("click", reverseTaskDone);
+
     const allDoneButton = document.querySelector(".js-setDoneAll");
-    allDoneButton.addEventListener("click", () => {
-      tasks.forEach((task, index) => {
-        if (!task.done) {
-          toogleTaskDone(index);
-        }
-      });
-    });
+    allDoneButton.addEventListener("click", setItemDone);
   };
 
   const removeTask = (taskIndex) => {
@@ -104,8 +106,7 @@
 
       insertHTML.innerHTML = buttonsHTMLContent;
 
-      bindHideButton();
-      bindAllDoneButton();
+      bindButtons();
     } else {
       insertHTML.innerHTML = buttonsHTMLContent;
     }
@@ -133,14 +134,11 @@
     newTaskElement.focus();
   };
 
-  const bindListeners = () => {
+  const init = () => {
     const form = document.querySelector(".js-form");
     form.addEventListener("submit", onFormSubmit);
-  };
 
-  const init = () => {
     render();
-    bindListeners();
   };
 
   init();
