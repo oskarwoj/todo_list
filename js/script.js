@@ -133,12 +133,14 @@
     newTaskElement.focus();
   };
 
+  const bindListeners = () => {
+    const form = document.querySelector(".js-form");
+    form.addEventListener("submit", onFormSubmit);
+  };
+
   const init = () => {
     render();
-
-    const form = document.querySelector(".js-form");
-
-    form.addEventListener("submit", onFormSubmit);
+    bindListeners();
   };
 
   init();
