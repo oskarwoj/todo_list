@@ -47,7 +47,6 @@
 
   const bindRemoveEvents = () => {
     const removeButtons = document.querySelectorAll(".js-remove");
-
     removeButtons.forEach((removeButton, index) => {
       removeButton.addEventListener("click", () => {
         removeTask(index);
@@ -107,6 +106,8 @@
 
       bindHideButton();
       bindAllDoneButton();
+    } else {
+      insertHTML.innerHTML = buttonsHTMLContent;
     }
   };
 
