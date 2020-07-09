@@ -8,13 +8,11 @@
 
     bindRemoveEvents();
     bindToogleDoneEvents();
+    bindButtonsEvents();
   };
 
   const renderTasks = () => {
-    let tasksListHTMLContent = "";
-
-    for (const task of tasks) {
-      tasksListHTMLContent += `
+    const taskToHTML = (task) => `
       <li class="tasks__item js-task ${
         task.done && hideDoneTasks ? "task__item--hide" : ""
       }">
@@ -28,10 +26,11 @@
         🗑
         </button>
       </li>
-      `;
-    }
+    `;
 
-    document.querySelector(".js-tasks").innerHTML = tasksListHTMLContent;
+    document.querySelector(".js-tasks").innerHTML = tasks
+      .map(taskToHTML)
+      .join("");
   };
 
   const renderButtons = () => {
@@ -41,33 +40,28 @@
     if (tasks.length) {
       buttonsHTMLContent += `
       <button class="section__button js-hideDoneButton">
-       ${hideDoneTasks ? "Pokaż ukończone" : "Ukryj ukończone"} 
+        ${hideDoneTasks ? "Pokaż ukończone" : "Ukryj ukończone"} 
       </button>
       <button class="section__button js-setDoneAll"  ${
         tasks.every(({ done }) => done) ? "disabled" : ""
       }>
         Ukończ wszystkie
       </button>`;
-
-      insertHTML.innerHTML = buttonsHTMLContent;
-
-      bindButtonsListener();
-    } else {
-      insertHTML.innerHTML = buttonsHTMLContent;
     }
+    insertHTML.innerHTML = buttonsHTMLContent;
   };
 
-  const reverseTaskDone = () => {
+  const toogleHideTasks = () => {
     hideDoneTasks = !hideDoneTasks;
     render();
   };
 
-  const setItemDone = () => {
-    tasks.forEach((task, index) => {
-      if (!task.done) {
-        toogleTaskDone(index);
-      }
-    });
+  const setAllDone = () => {
+    tasks = tasks.map((task) => ({
+      ...task,
+      done: true,
+    }));
+    render();
   };
 
   const removeTask = (taskIndex) => {
@@ -105,7 +99,6 @@
 
   const bindToogleDoneEvents = () => {
     const toogleDoneButtons = document.querySelectorAll(".js-toogleDone");
-
     toogleDoneButtons.forEach((toogleDoneButton, index) => {
       toogleDoneButton.addEventListener("click", () => {
         toogleTaskDone(index);
@@ -113,11 +106,12 @@
     });
   };
 
-  const bindButtonsListener = () => {
+  const bindButtonsEvents = () => {
     const hideButton = document.querySelector(".js-hideDoneButton");
-    hideButton.addEventListener("click", reverseTaskDone);
+    hideButton.addEventListener("click", toogleHideTasks);
+
     const allDoneButton = document.querySelector(".js-setDoneAll");
-    allDoneButton.addEventListener("click", setItemDone);
+    allDoneButton.addEventListener("click", setAllDone);
   };
 
   const onFormSubmit = (event) => {
